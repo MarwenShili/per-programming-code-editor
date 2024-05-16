@@ -1,5 +1,5 @@
 export const PATH = {
-  ROOT: '/',
+  ROOT: '/join',
   LOGIN: '/login',
   REGISTER: '/register',
 }

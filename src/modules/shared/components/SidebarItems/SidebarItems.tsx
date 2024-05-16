@@ -29,7 +29,7 @@ const SidebarItems: React.FC<ISidebarItemsProps> = () => {
   }
 
   function leaveRoom() {
-    reactNavigator('/')
+    reactNavigator('/join')
   }
 
   return (

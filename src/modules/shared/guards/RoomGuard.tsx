@@ -7,7 +7,7 @@ interface MainLayoutProps {
 
 const RoomGuard = ({ children }: MainLayoutProps) => {
   const isAuthenticated = useAppSelector((state) => state.auth.isAuthenticated)
-  return true ? children : <Navigate to="/login" />
+  return true ? children : <Navigate to="/join" />
 }
 
 export default RoomGuard

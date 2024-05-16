@@ -1,7 +1,8 @@
 import { useState, KeyboardEvent, ChangeEvent, MouseEvent } from 'react'
 import { v4 as uuidV4 } from 'uuid'
-import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import Button from '../shared/components/Button/Button'
+import { message } from 'antd'
 const JoinPage = () => {
   const navigate = useNavigate()
 
@@ -12,12 +13,12 @@ const JoinPage = () => {
     e.preventDefault()
     const id = uuidV4()
     setRoomId(id)
-    toast.success('Created a new room')
+    message.success('Created a new room')
   }
 
   const joinRoom = () => {
     if (!roomId || !username) {
-      toast.error('ROOM ID & username is required')
+      message.error('ROOM ID & username is required')
       return
     }
 
@@ -64,9 +65,7 @@ const JoinPage = () => {
             value={username}
             onKeyUp={handleInputEnter}
           />
-          <button className="btn joinBtn" onClick={joinRoom}>
-            Join
-          </button>
+          <Button onClick={joinRoom}>Join</Button>
           <span className="createInfo">
             If you don't have an invite then create &nbsp;
             <a onClick={createNewRoom} href="" className="createNewBtn">

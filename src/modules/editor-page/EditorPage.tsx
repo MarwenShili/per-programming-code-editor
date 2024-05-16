@@ -39,7 +39,7 @@ const Dashboard: React.FC = () => {
       function handleErrors(e: Error) {
         console.log('socket error', e)
         message.error('Socket connection failed, try again later.')
-        // reactNavigator('/')
+        reactNavigator('/join')
       }
 
       socketRef.current.emit(ACTIONS.JOIN, {
@@ -89,7 +89,7 @@ const Dashboard: React.FC = () => {
   }, [location.state, reactNavigator, roomId])
 
   if (!location.state) {
-    return <Navigate to="/" />
+    return <Navigate to="/join" />
   }
 
   return (

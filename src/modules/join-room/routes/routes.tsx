@@ -17,7 +17,7 @@ const routes: RouteConfig[] = [
   {
     exact: true,
     guard: RoomGuard,
-    path: '/join',
+    path: '/',
     component: lazy(() => import('../JoinRoom')),
     layout: GuestLayout,
   },
