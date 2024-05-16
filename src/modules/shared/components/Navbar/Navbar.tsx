@@ -2,9 +2,9 @@ import menuIcon from '../../assets/icons/navbar/menu.svg'
 import { useLocation } from 'react-router-dom'
 import ThemeButton from '../ThemeButton/ThemeButton'
 import { Avatar, Button, Dropdown, MenuProps, Space } from 'antd'
-import enFlagIcon from '../../assets/icons/Navbar/en-flag.png'
-import frFlagIcon from '../../assets/icons/Navbar/fr-flag.png'
-import arFlagIcon from '../../assets/icons/Navbar/ar-flag.png'
+// import enFlagIcon from '../../assets/icons/Navbar/en-flag.png'
+// import frFlagIcon from '../../assets/icons/Navbar/fr-flag.png'
+// import arFlagIcon from '../../assets/icons/Navbar/ar-flag.png'
 import { ReactComponent as ProfileIcon } from '../../assets/icons/sidebar/profile.svg'
 import { ReactComponent as SettingsIcon } from '../../assets/icons/navbar/settings.svg'
 import { ReactComponent as LogoutIcon } from '../../assets/icons/navbar/logout.svg'
@@ -39,35 +39,35 @@ const Navbar: React.FC<INavbarProps> = ({
     dispatch(logout())
   }
 
-  const languagesItems: MenuProps['items'] = [
-    {
-      key: '1',
-      label: (
-        <div className="navbar-flag-container" onClick={() => onChangeLanguage('en')}>
-          <img src={enFlagIcon} alt="flag" className="navbar-flag" />
-          <p>{t('language.en')}</p>
-        </div>
-      ),
-    },
-    {
-      key: '2',
-      label: (
-        <div className="navbar-flag-container" onClick={() => onChangeLanguage('fr')}>
-          <img src={frFlagIcon} alt="flag" className="navbar-flag" />
-          <p>{t('language.fr')}</p>
-        </div>
-      ),
-    },
-    {
-      key: '3',
-      label: (
-        <div className="navbar-flag-container" onClick={() => onChangeLanguage('ar')}>
-          <img src={arFlagIcon} alt="flag" className="navbar-flag" />
-          <p>{t('language.ar')}</p>
-        </div>
-      ),
-    },
-  ]
+  // const languagesItems: MenuProps['items'] = [
+  //   {
+  //     key: '1',
+  //     label: (
+  //       <div className="navbar-flag-container" onClick={() => onChangeLanguage('en')}>
+  //         <img src={enFlagIcon} alt="flag" className="navbar-flag" />
+  //         <p>{t('language.en')}</p>
+  //       </div>
+  //     ),
+  //   },
+  //   {
+  //     key: '2',
+  //     label: (
+  //       <div className="navbar-flag-container" onClick={() => onChangeLanguage('fr')}>
+  //         <img src={frFlagIcon} alt="flag" className="navbar-flag" />
+  //         <p>{t('language.fr')}</p>
+  //       </div>
+  //     ),
+  //   },
+  //   {
+  //     key: '3',
+  //     label: (
+  //       <div className="navbar-flag-container" onClick={() => onChangeLanguage('ar')}>
+  //         <img src={arFlagIcon} alt="flag" className="navbar-flag" />
+  //         <p>{t('language.ar')}</p>
+  //       </div>
+  //     ),
+  //   },
+  // ]
 
   const accountInfoItems: MenuProps['items'] = [
     {
@@ -124,7 +124,7 @@ const Navbar: React.FC<INavbarProps> = ({
       </div>
       <div className="navbar-right">
         <Space size={'middle'}>
-          <Dropdown
+          {/* <Dropdown
             menu={{ items: languagesItems }}
             trigger={['click']}
             placement="bottomRight"
@@ -139,7 +139,7 @@ const Navbar: React.FC<INavbarProps> = ({
                 />
               </div>
             </Button>
-          </Dropdown>
+          </Dropdown> */}
 
           <Dropdown
             menu={{ items: accountInfoItems }}
