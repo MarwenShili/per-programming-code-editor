@@ -7,4 +7,6 @@ export interface IEditorState {
   status: string
   clients: User[] | null
   error: string | null
+  activeEditor: string
+  hoIsTyping: string
 }

@@ -10,15 +10,19 @@ import 'codemirror/addon/hint/show-hint'
 import 'codemirror/addon/lint/lint'
 
 import { ACTIONS } from '../constants/actions'
+import { useLocation } from 'react-router-dom'
+import { message } from 'antd'
 
 interface EditorProps {
   socketRef: React.MutableRefObject<any>
   roomId: string
   onCodeChange: (code: string) => void
+  onTyping: (username: string) => void
 }
 
-const Editor: React.FC<EditorProps> = ({ socketRef, roomId, onCodeChange }) => {
+const Editor = ({ socketRef, roomId, onCodeChange, onTyping }: EditorProps) => {
   const editorRef = useRef<Codemirror.EditorFromTextArea | null>(null)
+  const location = useLocation()
 
   useEffect(() => {
     const init = async () => {
@@ -47,6 +51,7 @@ const Editor: React.FC<EditorProps> = ({ socketRef, roomId, onCodeChange }) => {
             socketRef.current.emit(ACTIONS.CODE_CHANGE, {
               roomId,
               code,
+              username: location.state.username,
             })
           }
         })
@@ -57,9 +62,14 @@ const Editor: React.FC<EditorProps> = ({ socketRef, roomId, onCodeChange }) => {
 
   useEffect(() => {
     if (socketRef.current) {
-      socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code }: any) => {
+      socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code, username }: any) => {
         if (code !== null) {
           editorRef.current?.setValue(code)
+        }
+
+        if (username !== null) {
+          // message.success(`${username} is typing`)
+          onTyping(username)
         }
       })
     }

@@ -3,6 +3,21 @@
     color: #f8f8f2;
     width: 100%;
     border-radius: 12px;
-    min-height: calc(100vh - 141px);
-    height: calc(100vh - 141px);
+    min-height: calc(100vh - 121px);
+    height: calc(100vh - 121px);
+}
+
+.editor-page {
+    position: relative;
+
+    .ho-is-typing {
+        position: absolute;
+        z-index: 10;
+        color: #000;
+        top: 5px;
+        right: 10px;
+        background-color: #fff;
+        border-radius: 16px;
+        padding: 0 5px;
+    }
 }

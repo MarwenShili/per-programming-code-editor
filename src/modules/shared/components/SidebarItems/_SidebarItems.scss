@@ -12,6 +12,7 @@
   .user-list {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 
     .item {
       display: flex;
@@ -54,30 +55,18 @@
     }
   }
 
+  .item-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
 
-  .active {
-    background-color: #0088f7;
-    color: white;
-
-    &:hover {
-      background-color: #0088f7;
-      color: white;
-
-      .icon_color {
-        color: white;
-      }
-    }
-
-    .icon_color {
-      color: white;
-    }
   }
 
-  .link-icon-stroke-color {
-    stroke: #0088f7;
-  }
-
-  .link-icon-stroke-color-active {
-    stroke: white;
+  .item-avatar-active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: green;
   }
 }

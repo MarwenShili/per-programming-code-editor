@@ -1,7 +1,7 @@
 import Button from '../Button/Button'
 import { RootState, useAppSelector } from '../../store'
 import { useParams } from '../../hooks/useParams'
-import { message } from 'antd'
+import { Avatar, message } from 'antd'
 import { useNavigate } from 'react-router-dom'
 
 interface ISidebarItemsProps {
@@ -9,7 +9,8 @@ interface ISidebarItemsProps {
 }
 
 const SidebarItems: React.FC<ISidebarItemsProps> = () => {
-  const { clients } = useAppSelector((state: RootState) => state.editor)
+  const { clients, hoIsTyping } = useAppSelector((state: RootState) => state.editor)
+
   const { roomId } = useParams()
 
   const reactNavigator = useNavigate()
@@ -37,13 +38,16 @@ const SidebarItems: React.FC<ISidebarItemsProps> = () => {
       <div className="user-list">
         {clients?.map((user, index) => {
           return (
-            <div key={index} className="item">
-              <div className={`link-icon-stroke-color `}>{user?.username}</div>
-            </div>
+            <Avatar
+              key={index}
+              className={hoIsTyping === user?.username ? 'item-avatar-active' : 'item-avatar'}
+              size="large"
+            >
+              <div className="user-name-avatar">{user?.username}</div>
+            </Avatar>
           )
         })}
       </div>
-
       <div className="action-sidebar">
         <Button onClick={copyRoomId}>Copy Room Id</Button>
         <Button onClick={leaveRoom}>Leave</Button>
