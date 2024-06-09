@@ -29,7 +29,8 @@ const SidebarItems: React.FC<ISidebarItemsProps> = () => {
     }
   }
 
-  function leaveRoom() {
+  function leaveRoom(e: any) {
+    e.stopPropagation()
     reactNavigator('/')
   }
 

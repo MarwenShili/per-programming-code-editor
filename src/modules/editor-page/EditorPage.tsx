@@ -103,6 +103,7 @@ const Dashboard: React.FC = () => {
   return (
     <div className="editor-page">
       {hoIsTyping && <span className="ho-is-typing">{hoIsTyping} is typing</span>}{' '}
+      <div className="run-btn">Save</div>
       {currentEditor === 'CodeMirror' ? (
         <Editor
           socketRef={socketRef}

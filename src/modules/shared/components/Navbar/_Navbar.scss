@@ -42,6 +42,8 @@
     gap: 22px;
   }
 
+
+
   @media only screen and (max-width: 1024px) {
     .navbar-left {
       .navbar-left-menu-icon {
@@ -68,4 +70,54 @@
 
 .navbar-dropdown-cursor {
   cursor: pointer;
+}
+
+.user-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  .item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    height: 50px;
+    background-color: #0088f7;
+    padding: 12px 15px 8px 15px;
+    border-radius: 8px;
+    color: white;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    .icon_color {
+      color: #4f68c7;
+      padding-bottom: 3px;
+    }
+
+    &:hover {
+      background-color: #f1f5f9;
+      color: #0088f7;
+
+      .icon_color {
+        color: white;
+      }
+    }
+  }
+}
+
+.item-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+
+}
+
+.item-avatar-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: green;
 }

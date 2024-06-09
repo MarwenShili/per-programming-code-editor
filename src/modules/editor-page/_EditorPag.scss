@@ -9,10 +9,11 @@
 
 .editor-page {
     position: relative;
+    max-height: 100vh;
 
     .ho-is-typing {
         position: absolute;
-        z-index: 10;
+        z-index: 999;
         color: #000;
         top: 5px;
         right: 10px;
@@ -20,4 +21,19 @@
         border-radius: 16px;
         padding: 0 5px;
     }
+}
+
+.run-btn {
+    position: absolute;
+    bottom: 150px;
+    right: 20px;
+    width: 100px;
+    height: 40px;
+    border-radius: 12px;
+    background: #fff;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
 }

@@ -8,10 +8,11 @@ import { Avatar, Button, Dropdown, MenuProps, Space } from 'antd'
 import { ReactComponent as ProfileIcon } from '../../assets/icons/sidebar/profile.svg'
 import { ReactComponent as SettingsIcon } from '../../assets/icons/navbar/settings.svg'
 import { ReactComponent as LogoutIcon } from '../../assets/icons/navbar/logout.svg'
-import { useAppDispatch } from '../../store'
+import { RootState, useAppDispatch, useAppSelector } from '../../store'
 import { logout } from '@src/modules/auth/data/authThunk'
 import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
+import useWindowSize from '../../hooks/useWindowSize'
 
 interface INavbarProps {
   setShowSidebar: React.Dispatch<React.SetStateAction<boolean>>
@@ -68,6 +69,7 @@ const Navbar: React.FC<INavbarProps> = ({
   //     ),
   //   },
   // ]
+  const { clients, hoIsTyping } = useAppSelector((state: RootState) => state.editor)
 
   const accountInfoItems: MenuProps['items'] = [
     {
@@ -102,6 +104,8 @@ const Navbar: React.FC<INavbarProps> = ({
     },
   ]
 
+  const { width } = useWindowSize()
+
   return (
     <div className="navbar">
       <div className="navbar-left">
@@ -122,9 +126,24 @@ const Navbar: React.FC<INavbarProps> = ({
         />
         <p className="navbar-left-title">{pathname.split('/')[1]}</p>
       </div>
-      <div className="navbar-right">
-        <Space size={'middle'}>
-          {/* <Dropdown
+      {width! < 1024 && (
+        <div className="user-list">
+          {clients?.map((user, index) => {
+            return (
+              <Avatar
+                key={index}
+                className={hoIsTyping === user?.username ? 'item-avatar-active' : 'item-avatar'}
+                size="large"
+              >
+                <div className="user-name-avatar">{user?.username}</div>
+              </Avatar>
+            )
+          })}
+        </div>
+      )}
+      {/* <div className="navbar-right">
+        <Space size={'middle'}> */}
+      {/* <Dropdown
             menu={{ items: languagesItems }}
             trigger={['click']}
             placement="bottomRight"
@@ -141,7 +160,7 @@ const Navbar: React.FC<INavbarProps> = ({
             </Button>
           </Dropdown> */}
 
-          <Dropdown
+      {/* <Dropdown
             menu={{ items: accountInfoItems }}
             trigger={['click']}
             placement="bottomRight"
@@ -153,11 +172,11 @@ const Navbar: React.FC<INavbarProps> = ({
                 A
               </Avatar>
             </Space>
-          </Dropdown>
-        </Space>
+          </Dropdown> */}
+      {/* </Space> */}
 
-        <ThemeButton />
-      </div>
+      {/* <ThemeButton /> */}
+      {/* </div> */}
     </div>
   )
 }
